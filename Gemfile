@@ -21,7 +21,13 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'annotate', ">=2.5.0"
+# To use debugger
+  gem 'debugger'
+end
 
+group :test do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
 end
 
 group :production do
@@ -52,5 +58,3 @@ end
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-gem 'debugger'

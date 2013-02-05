@@ -1,0 +1,12 @@
+%h1 New Creature
+
+= form_for @creature do |f|
+  = f.label :name
+  = f.text_field :name, placeholder: "Creature's name"
+  = f.label :description
+  = f.text_area :description, placeholder: "Description for creature"
+  = f.label :habitat
+  = f.text_field :habitat, placeholder: "Creature's habitat"
+  %br 
+  = f.submit 'Save', :id => 'Save'
+
