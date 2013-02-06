@@ -1,3 +1,19 @@
+/* app wide settings */
+@media all {
+  .btn-primary a, .btn-danger a {
+    color: white;
+  }
+
+  .btn-primary a:hover, .btn-danger a:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.label {
+  font-size: 12px;
+}
+
 .creature {
   display:  inline-block;
   border: 2px solid black;

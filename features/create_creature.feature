@@ -4,13 +4,13 @@ Feature: CreateCreature
   goes to add creature page to enter details
 
   Scenario: User saves a new creature
-    Given User is on home page
-    When User clicks "Add" link
-    Then User is directed to create new creature page
-    And User fill in a name for creature 
-    And User fill in a description for creature
-    And User fill in a habitat for creature 
-    When User clicks "Save" button
+    Given the User is on the home page
+    When User clicks the "Add" link
+    Then she is directed to the create new creature page
+    And fills in a name for creature 
+    And fills in a description for creature
+    And fills in a habitat for creature 
+    When User clicks the "Save" button
     Then Creature is saved
     Then User is redirected to the home page 
-    And The the new creature is now part of the creature list 
+    And the new creature is now part of the creature list 

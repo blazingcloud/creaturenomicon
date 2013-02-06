@@ -1,4 +1,4 @@
-%h1 New Creature
+%h1 Edit Creature
 
 = form_for @creature do |f|
   = f.label :name, :class => 'label'
@@ -9,9 +9,11 @@
   = f.text_field :habitat, placeholder: "Creature's habitat"
   = f.label :picture, :class => 'label'
   = f.hidden_field(:picture_cache)
-  = f.file_field(:picture)
+  = f.file_field :picture, :id => 'picture'
   %br 
-  = f.submit 'Save', :id => 'Save', :class => 'btn btn-primary'
+  = f.submit 'Update', :id => 'Update', :class => 'btn btn-primary'
+  .btn.btn-danger
+    %span= link_to 'Destroy', creature_path(@creature), :method => :delete   
   .btn
     %span= link_to 'Cancel', root_path
 

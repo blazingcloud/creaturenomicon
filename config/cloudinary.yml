@@ -1,0 +1,18 @@
+development:
+  cloud_name: faceballs
+  api_key: '546293988565181'
+  api_secret: 3iX0D8rVLe01u_YZvq2qlRp2psI
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: faceballs  
+  api_key: '546293988565181'
+  api_secret: 3iX0D8rVLe01u_YZvq2qlRp2psI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: faceballs
+  api_key: '546293988565181'
+  api_secret: 3iX0D8rVLe01u_YZvq2qlRp2psI
+  enhance_image_tag: true
+  static_image_support: false

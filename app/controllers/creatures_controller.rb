@@ -12,4 +12,27 @@ class CreaturesController < ApplicationController
     end
   end
 
+  def edit
+    @creature = Creature.find(params[:id])
+  end
+
+  def update
+    @creature = Creature.find(params[:id])
+    puts params.inspect
+    @creature.update_attributes(params[:creature])
+    if @creature.changed? 
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @creature = Creature.find(params[:id]).destroy
+    redirect_to root_path
+  end
+
+  def picture_will_change
+
+  end
 end
