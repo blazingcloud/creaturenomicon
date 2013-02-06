@@ -1,6 +1,7 @@
 .creature
   .picture
-    =image_tag(creature.picture_url(:thumbnail), :width => 50, :height => 50)
+    / = creature.picture.url
+    =image_tag(creature.picture_url(:thumbnail), :width => 50, :height => 50, :id => creature.name)
   .name
     .label Name
     =creature.name

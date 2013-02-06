@@ -7,9 +7,8 @@ end
 
 When /^User attaches picture$/ do
   # pending ("install carrierwave and cloudinary and make it add mount PictureLoader to :picture") 
-  # attach_file('test', '#{Rails.root}/assets/images/rails.png')
-  puts "PATH:::::#{Rails.root}/app/assets/images/rails.png"
-  attach_file('picture', "#{Rails.root}/app/assets/images/rails.png")
+  puts "PATH:::::#{Rails.root}/app/assets/images/good.jpg"
+  attach_file('picture', "#{Rails.root}/app/assets/images/good.jpg")
 
 end
 
@@ -22,8 +21,11 @@ Then /^then is redirected to home page$/ do
 end
 
 Then /^the picture shows up on the index if there is picture for the creature$/ do
-  Creature.find_by_name('Tyra')
-  page.has_content?('')
+  creature = Creature.find_by_name('Tyra')
+  puts "Match cloudinary?="
+  puts /cloudinary/.match(creature.picture_url)
+  puts creature.picture.url
+  results = page.find('.picture img#Tyra')
 end
 
 
