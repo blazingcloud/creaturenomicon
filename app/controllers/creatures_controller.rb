@@ -20,7 +20,7 @@ class CreaturesController < ApplicationController
     @creature = Creature.find(params[:id])
     puts params.inspect
     @creature.update_attributes(params[:creature])
-    if @creature.changed? 
+    if @creature.persisted? 
       redirect_to root_path
     else
       render 'edit'
@@ -32,7 +32,4 @@ class CreaturesController < ApplicationController
     redirect_to root_path
   end
 
-  def picture_will_change
-
-  end
 end

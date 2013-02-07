@@ -9,7 +9,6 @@ When /^User attaches picture$/ do
   # pending ("install carrierwave and cloudinary and make it add mount PictureLoader to :picture") 
   puts "PATH:::::#{Rails.root}/app/assets/images/good.jpg"
   attach_file('picture', "#{Rails.root}/app/assets/images/good.jpg")
-
 end
 
 Then /^User clicks the 'Update' button$/ do
@@ -26,6 +25,7 @@ Then /^the picture shows up on the index if there is picture for the creature$/ 
   puts /cloudinary/.match(creature.picture_url)
   puts creature.picture.url
   results = page.find('.picture img#Tyra')
+  puts results
 end
 
 

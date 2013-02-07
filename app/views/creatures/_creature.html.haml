@@ -1,4 +1,4 @@
-.creature
+.creature{:id => creature.name}
   .picture
     / = creature.picture.url
     =image_tag(creature.picture_url(:thumbnail), :width => 50, :height => 50, :id => creature.name)
@@ -11,6 +11,9 @@
   .habitat
     .label Habitat
     =creature.habitat
+  .type
+    .label Type
+    =creature.creature_type
   .btn
     %span= link_to "Edit", edit_creature_path(creature), :id => "Edit", :title => "Edit"
 

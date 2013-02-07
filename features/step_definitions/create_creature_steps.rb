@@ -40,7 +40,7 @@ Then /^Creature is saved$/ do
   @my_creature.save
 end
 
-Then /^User is redirected to the home page$/ do
+Then /is redirected to the home page$/ do
   # pending ("Redirect to home")
   visit root_path
 end
