@@ -14,6 +14,7 @@ class CreaturesController < ApplicationController
 
   def edit
     @creature = Creature.find(params[:id])
+    @creatures = Creature.all
   end
 
   def update

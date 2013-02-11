@@ -21,6 +21,8 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'annotate', ">=2.5.0"
+  gem 'jasmine'
+  
 # To use debugger
   gem 'debugger'
 end

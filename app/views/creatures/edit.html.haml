@@ -12,10 +12,29 @@
   = f.label :picture, :class => 'label'
   = f.hidden_field(:picture_cache)
   = f.file_field :picture, :id => 'picture'
-  %br 
+  %br
+
+
+  %br
   = f.submit 'Update', :id => 'Update', :class => 'btn btn-primary'
   .btn.btn-danger
     %span= link_to 'Destroy', creature_path(@creature), :method => :delete   
   .btn
     %span= link_to 'Cancel', root_path
+
+%h3 Close Friends
+=text_field_tag "friends"
+.btn
+  %span= link_to 'Add Friend'
+
+
+%h3 Frienemies
+
+
+:javascript
+  $(function() {
+    $('#friends').autocomplete({
+      source: #{@creatures.collect { |i| i.name }}
+    });
+  });
 
