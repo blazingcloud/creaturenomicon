@@ -13,7 +13,15 @@
   = f.hidden_field(:picture_cache)
   = f.file_field :picture, :id => 'picture'
   %br
+  %br
+  %h3 Friends 
+  %br
+  #friends_list
+    - if @creature.friends
+      = @creature.friends.join(' ')
 
+  = f.hidden_field(:friends)
+  = text_field_tag :friends_input
 
   %br
   = f.submit 'Update', :id => 'Update', :class => 'btn btn-primary'
@@ -22,19 +30,41 @@
   .btn
     %span= link_to 'Cancel', root_path
 
-%h3 Close Friends
-=text_field_tag "friends"
-.btn
-  %span= link_to 'Add Friend'
-
-
-%h3 Frienemies
-
-
 :javascript
   $(function() {
-    $('#friends').autocomplete({
-      source: #{@creatures.collect { |i| i.name }}
-    });
-  });
+    var creatures = #{@creatures.collect { |i| i.name }}; 
 
+    $('#friends_input').autocomplete({
+      source: creatures 
+    });
+
+    $("#friends_input").keydown(function(e){
+      if(e.keyCode == 13){
+        e.preventDefault();
+        var friend = $(this).val();
+
+        //is the input an existing creature?
+        if($.inArray(friend, creatures) > -1) {
+          //manipulate display of friends_list
+          var friends_text = $('#friends_list').text();
+
+          //add to text if not already exist in list?
+          var re = new RegExp(friend, "i");
+
+          if(!friends_text.match(re)) {
+            $('#friends_list').text(friends_text + ' ' + friend);
+            // alert($('#creature_friends').val());
+          };
+
+        } else {
+          alert('Can only friend an existing creature.');
+        };
+        //set the hidden field to a text string to save, so that it is not an array
+        $('#creature_friends').val($('#friends_list').text())
+        //reset input to ''
+        $(this).val(''); 
+      }
+    });
+
+    $('#Update')
+  });

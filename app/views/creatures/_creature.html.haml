@@ -14,6 +14,10 @@
   .type
     .label Type
     =creature.creature_type
+  -if creature.friends
+    .friends
+      .label Friends
+      =creature.friends.join(' ')
   .btn
     %span= link_to "Edit", edit_creature_path(creature), :id => "Edit", :title => "Edit"
 
