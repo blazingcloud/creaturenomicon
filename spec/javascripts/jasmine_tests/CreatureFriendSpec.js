@@ -5,7 +5,9 @@ describe("when user presses enter, #friends is updated with new friend name",
   function (){
 
   beforeEach(function() {
+    myHtmlSetup = $(<ul><li>blah</li></ul>)
     alert($(#friends_input).val());
+    myFunc([1,2,3,4]);
   };
 
   it("should add friends name to list after pressing enter", function (){
