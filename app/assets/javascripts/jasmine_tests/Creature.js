@@ -1,4 +1,0 @@
-Creaturenomicon ||= {}
-
-function Creature() {
-}

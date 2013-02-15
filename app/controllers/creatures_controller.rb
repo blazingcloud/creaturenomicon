@@ -20,27 +20,28 @@ class CreaturesController < ApplicationController
   def update
     @creature = Creature.find(params[:id])
     #need to cleanup string -> array -> string stuff... 
-    params[:creature][:friends].gsub!(/(,|\"|\\|\[|\])/, '')
-    
+    params[:creature_friends].gsub!(/(,|\"|\\|\[|\])/, '')
+
+    #not allow creature to friend themselves
+    re = Regexp.new(@creature.name)
+    params[:creature_friends].gsub!(re, '')
+
+    params[:creature][:friends] = params[:creature_friends].split(' ')
     @creature.update_attributes(params[:creature])
-    #save as array
-    @creature.friends = params[:creature][:friends].split(' ')
-    @creature.save
 
     # now save creature is saved as a friend too
-    @creature.friends.each do |f|
-      c = Creature.find_by_name(f)
-      if c
-        if c.friends && f != @creature.name
-          unless c.friends.include?(@creature.name)
-            c.friends << @creature.name
-            c.save
+    @creature.friends.each do |friend|
+      ctmp = Creature.find_by_name(friend)
+      if ctmp
+        if ctmp.friends 
+          unless ctmp.friends.include?(@creature.name) 
+            ctmp.friends << @creature.name
+            ctmp.save
           end
         else 
-          c.friends = [ @creature.name ]
-          c.save
+          ctmp.friends = [ @creature.name ]
+          ctmp.save
         end
-        puts c.inspect
       end
     end
 
